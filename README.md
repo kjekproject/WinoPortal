@@ -21,9 +21,9 @@ Klienci:
 Wina:
 - nazwa,
 - kolor (białe, różowe, czerwone),
-- smak (wytrawne, półwytrawne, półsłodkie, słodkie)
-- zawartość alkoholu
-- wyprodukowana ilość (produkcja w litrach)
+- smak (wytrawne, półwytrawne, półsłodkie, słodkie),
+- rocznik,
+- wyprodukowana ilość (produkcja w litrach),
 - stan (liczba dostępnych butelek),
 - cena,
 - opinie (relacja z opinią) 
