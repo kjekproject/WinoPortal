@@ -54,3 +54,12 @@ Wiadomości:
 - strona obsługi zamówienia przez producenta (zapytanie + możliwość wysłania wiadomości).
 - strona informacji zwrotnej odnośnie zamówienia od producenta dla klienta (info czy zostało przyjęte + możliwość wysłania wiadomości).
 - strona z wiadomościami
+
+4. Procesy:
+- rejestracja użytkowsnika (wraz z wyborem roli czy producent czy klient),
+- edycja profilu użytkownika,
+- logowania,
+- wylogowywanie,
+- dodawanie wina (opcja dla producenta),
+- dodawanie komentarzy do wina (klient)
+- wysyłanie wiadomości.
