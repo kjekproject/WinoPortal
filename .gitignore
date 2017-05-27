@@ -1,0 +1,11 @@
+/app/cache/
+/app/config/parameters.yml
+/app/bootstrap.php.cache
+/app/logs/*
+!app/cache/.gitkeep
+!app/logs/.gitkeep
+/app/phpunit.xml
+/nbproject/
+/vendor/
+/bin/
+/web/
