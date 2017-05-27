@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ wino.nazwa }} {% endblock %}
+{% block contentTitle %} {{ wino.nazwa }} {% endblock %}
+{% block content %}
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Nazwa</th>
+                <td>{{ wino.nazwa }}</td>
+            </tr>
+            <tr>
+                <th>Producent</th>
+                <td>{{ wino.user.username }}</td>
+            </tr>
+            <tr>
+                <th>Kolor</th>
+                <td>{{ wino.kolor }}</td>
+            </tr>
+            <tr>
+                <th>Smak</th>
+                <td>{{ wino.smak }}</td>
+            </tr>
+            <tr>
+                <th>Rocznik</th>
+                <td>{{ wino.rocznik }}</td>
+            </tr>
+            <tr>
+                <th>Wyprodukowana ilość</th>
+                <td>{{ wino.wyprodukowanaIlosc }}</td>
+            </tr>
+            <tr>
+                <th>Dostępna ilość</th>
+                <td>{{ wino.stan }}</td>
+            </tr>
+            <tr>
+                <th>Cena</th>
+                <td>{{ wino.cena }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('wino_index') }}">Powrót do listy</a>
+    <a class="btn btn-primary" href="{{ path('wino_index') }}">Zamów</a>
+    <a class="btn btn-primary" href="{{ path('wino_index') }}">Pokaż producenta</a><br/><br/>
+    
+    <h3>Opinie</h3>
+ 
+    <a class="btn btn-primary" href="{{ path('wino_index') }}">Dodaj opinię</a>
+
+{% endblock %}

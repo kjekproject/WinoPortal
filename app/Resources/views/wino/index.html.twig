@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block contentTitle %}Lista win{% endblock %}
+    
+{% block content %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nazwa</th>
+                <th>Kolor</th>
+                <th>Smak</th>
+                <th>Rocznik</th>
+                <th>Cena</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for wino in wina %}
+            <tr>
+                <td>{{ wino.nazwa }}</td>
+                <td>{{ wino.kolor }}</td>
+                <td>{{ wino.smak }}</td>
+                <td>{{ wino.rocznik }}</td>
+                <td>{{ wino.cena }}</td>
+                <td>
+                    <a href="{{ path('wino_show', { 'id': wino.id }) }}">Więcej</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

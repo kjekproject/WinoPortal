@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dodaj wino{% endblock %}
+{% block contentTitle %} Dodaj wino do Twojej winnicy {% endblock %}
+{% block content %}
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+    
+{% endblock %}
