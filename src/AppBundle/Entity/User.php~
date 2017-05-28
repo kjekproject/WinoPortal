@@ -124,37 +124,4 @@ class User extends BaseUser
     {
         return $this->wina;
     }
-
-    /**
-     * Add opinie
-     *
-     * @param \AppBundle\Entity\Opinia $opinie
-     * @return User
-     */
-    public function addOpinie(\AppBundle\Entity\Opinia $opinie)
-    {
-        $this->opinie[] = $opinie;
-
-        return $this;
-    }
-
-    /**
-     * Remove opinie
-     *
-     * @param \AppBundle\Entity\Opinia $opinie
-     */
-    public function removeOpinie(\AppBundle\Entity\Opinia $opinie)
-    {
-        $this->opinie->removeElement($opinie);
-    }
-
-    /**
-     * Get opinie
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getOpinie()
-    {
-        return $this->opinie;
-    }
 }

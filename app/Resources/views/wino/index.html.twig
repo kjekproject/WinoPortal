@@ -23,7 +23,7 @@
                 <td>{{ wino.rocznik }}</td>
                 <td>{{ wino.cena }}</td>
                 <td>
-                    <a href="{{ path('wino_show', { 'id': wino.id }) }}">Więcej</a>
+                    <a class="btn btn-primary btn-xs" href="{{ path('wino_show', { 'id': wino.id }) }}">Więcej</a>
                 </td>
             </tr>
         {% endfor %}

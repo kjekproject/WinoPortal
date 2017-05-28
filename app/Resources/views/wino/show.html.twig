@@ -26,15 +26,15 @@
                 <td>{{ wino.rocznik }}</td>
             </tr>
             <tr>
-                <th>Wyprodukowana ilość</th>
+                <th>Wyprodukowana ilość (litry)</th>
                 <td>{{ wino.wyprodukowanaIlosc }}</td>
             </tr>
             <tr>
-                <th>Dostępna ilość</th>
+                <th>Dostępna ilość (litry)</th>
                 <td>{{ wino.stan }}</td>
             </tr>
             <tr>
-                <th>Cena</th>
+                <th>Cena (zł/litr)</th>
                 <td>{{ wino.cena }}</td>
             </tr>
         </tbody>
@@ -44,8 +44,30 @@
     <a class="btn btn-primary" href="{{ path('wino_index') }}">Zamów</a>
     <a class="btn btn-primary" href="{{ path('wino_index') }}">Pokaż producenta</a><br/><br/>
     
+    <h3>Dodaj opinię</h3>
+    {{ form_start(opinia_form) }}
+        {{ form_widget(opinia_form) }}
+        <input class="btn btn-primary" type="submit" value="Dodaj"/>
+    {{ form_end(opinia_form) }}<br/>
+    
     <h3>Opinie</h3>
- 
-    <a class="btn btn-primary" href="{{ path('wino_index') }}">Dodaj opinię</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Autor</th>
+                <th>Ocena</th>
+                <th>Opinia</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for opinia in wino.opinie %}
+            <tr>
+                <td>{{ opinia.user.username }}</td>
+                <td>{{ opinia.ocena }}</td>
+                <td>{{ opinia.tresc }}</td>
+            </tr>
+        {% endfor %}
+        <tbody>
+    </table>
 
 {% endblock %}

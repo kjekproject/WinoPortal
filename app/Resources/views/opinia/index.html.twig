@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Opinias list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Tresc</th>
+                <th>Ocena</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for opinia in opinias %}
+            <tr>
+                <td><a href="{{ path('opinia_show', { 'id': opinia.id }) }}">{{ opinia.id }}</a></td>
+                <td>{{ opinia.tresc }}</td>
+                <td>{{ opinia.ocena }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('opinia_show', { 'id': opinia.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('opinia_edit', { 'id': opinia.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('opinia_new') }}">Create a new opinia</a>
+        </li>
+    </ul>
+{% endblock %}

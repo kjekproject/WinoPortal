@@ -24,7 +24,7 @@
             <td>{{ wino.rocznik }}</td>
             <td>{{ wino.cena }}</td>
             <td>
-                <a class="btn btn-primary btn-xs" href="{{ path('wino_show', { 'id': wino.id }) }}">Więcej</a>
+                <a class="btn btn-primary btn-xs" href="{{ path('wino_edit', { 'id': wino.id }) }}">Edytuj/Usuń</a>
             </td>
         </tr>
     {% endfor %}

@@ -3,9 +3,12 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Wino;
+use AppBundle\Entity\User;
+use AppBundle\Entity\Opinia;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Wino controller.
@@ -69,7 +72,6 @@ class WinoController extends Controller
         }
 
         return $this->render('wino/new.html.twig', array(
-            'wina' => $wina,
             'form' => $form->createView(),
         ));
     }
@@ -82,11 +84,18 @@ class WinoController extends Controller
      */
     public function showAction(Wino $wino)
     {
-        $deleteForm = $this->createDeleteForm($wino);
-
+        $opinia = new Opinia();
+        $opinia->setWino($wino);
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        $opinia->setUser($user);
+        $opiniaForm = $this->createForm('AppBundle\Form\OpiniaType', $opinia, array(
+           'action' => $this->generateUrl('opinia_new'),
+            'method' => 'POST',
+        ));
+                    
         return $this->render('wino/show.html.twig', array(
             'wino' => $wino,
-            'delete_form' => $deleteForm->createView(),
+            'opinia_form' => $opiniaForm->createView(),
         ));
     }
 
@@ -98,6 +107,13 @@ class WinoController extends Controller
      */
     public function editAction(Request $request, Wino $wino)
     {
+        $userId = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $producerId = $wino->getUser()->getId();
+        
+        if($userId !== $producerId) {
+            $this->redirectToRoute('wino_index');
+        }
+        
         $deleteForm = $this->createDeleteForm($wino);
         $editForm = $this->createForm('AppBundle\Form\WinoType', $wino);
         $editForm->handleRequest($request);
