@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block contentTitle %}Wiadomości{% endblock %}
+{% block content %}
+<ul class="nav nav-tabs nav-justified">
+  <li role="presentation"><a href="{{ path('wiadomosc_odebrane') }}">Odebrane</a></li>
+  <li role="presentation" class="active"><a href="#">Wysłane</a></li><br/>
+</ul>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nadawca</th>
+                <th>Tytuł</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for wiadomosc in wiadomoscs %}
+            <tr>
+                <td>{{ wiadomosc.nadawca }}</td>
+                <td>{{ wiadomosc.tytul }}</td>
+                <td>
+                    <a class="btn btn-primary btn-xs" href="{{ path('wiadomosc_show', { 'id': wiadomosc.id }) }}">Pokaż</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block contentTitle %}Wiadomość{% endblock %}
+{% block content %}
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Nadawca</th>
+                <td>{{ wiadomosc.nadawca }}</td>
+            </tr>
+            <tr>
+                <th>Tytul</th>
+                <td>{{ wiadomosc.tytul }}</td>
+            </tr>
+            <tr>
+                <th>Tresc</th>
+                <td>{{ wiadomosc.tresc }}</td>
+            </tr>
+        </tbody>
+    </table><br/>
+    
+    <a class="btn btn-primary btn" href="{{ path('wiadomosc_new', { 'id': wiadomosc.id }) }} role="button">Odpowiedz</a><br/><br/>
+
+    {{ form_start(delete_form) }}
+        <input class="btn btn-primary" type="submit" value="Usuń">
+    {{ form_end(delete_form) }}
+
+{% endblock %}

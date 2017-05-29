@@ -39,7 +39,16 @@ class User extends BaseUser
      */
     private $opinie;
 
-
+    /**
+     * @ORM\OneToMany(targetEntity="Wiadomosc", mappedBy="nadawca")
+     */
+    private $wyslane;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Wiadomosc", mappedBy="odbiorca")
+     */
+    private $odebrane;
+    
     public function __construct()
     {
         parent::__construct();
@@ -123,5 +132,38 @@ class User extends BaseUser
     public function getWina()
     {
         return $this->wina;
+    }
+
+    /**
+     * Add opinie
+     *
+     * @param \AppBundle\Entity\Opinia $opinie
+     * @return User
+     */
+    public function addOpinie(\AppBundle\Entity\Opinia $opinie)
+    {
+        $this->opinie[] = $opinie;
+
+        return $this;
+    }
+
+    /**
+     * Remove opinie
+     *
+     * @param \AppBundle\Entity\Opinia $opinie
+     */
+    public function removeOpinie(\AppBundle\Entity\Opinia $opinie)
+    {
+        $this->opinie->removeElement($opinie);
+    }
+
+    /**
+     * Get opinie
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getOpinie()
+    {
+        return $this->opinie;
     }
 }

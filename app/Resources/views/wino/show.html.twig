@@ -41,13 +41,13 @@
     </table>
 
     <a class="btn btn-primary" href="{{ path('wino_index') }}">Powrót do listy</a>
-    <a class="btn btn-primary" href="{{ path('wino_index') }}">Zamów</a>
+    <a class="btn btn-primary" href="{{ path('wiadomosc_new', {'id': wino.user.id}) }}">Wyślij wiadomość</a>
     <a class="btn btn-primary" href="{{ path('wino_index') }}">Pokaż producenta</a><br/><br/>
     
     <h3>Dodaj opinię</h3>
     {{ form_start(opinia_form) }}
         {{ form_widget(opinia_form) }}
-        <input class="btn btn-primary" type="submit" value="Dodaj"/>
+        <input class="btn btn-primary" type="submit" value="Dodaj opinię"/>
     {{ form_end(opinia_form) }}<br/>
     
     <h3>Opinie</h3>

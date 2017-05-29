@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block contentTitle %}Nowa wiadomość{% endblock %}
+{% block content %}
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input class="btn btn-primary" type="submit" value="Wyślij" />
+    {{ form_end(form) }}<br/>
+
+    <a class="btn btn-primary" href="{{ path('wiadomosc_odebrane') }}">Powrót do skrzynki</a>
+
+{% endblock %}

@@ -39,7 +39,16 @@ class User extends BaseUser
      */
     private $opinie;
 
-
+    /**
+     * @ORM\OneToMany(targetEntity="Wiadomosc", mappedBy="nadawca")
+     */
+    private $wyslane;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Wiadomosc", mappedBy="odbiorca")
+     */
+    private $odebrane;
+    
     public function __construct()
     {
         parent::__construct();
@@ -156,5 +165,71 @@ class User extends BaseUser
     public function getOpinie()
     {
         return $this->opinie;
+    }
+
+    /**
+     * Add wyslane
+     *
+     * @param \AppBundle\Entity\Wiadomosc $wyslane
+     * @return User
+     */
+    public function addWyslane(\AppBundle\Entity\Wiadomosc $wyslane)
+    {
+        $this->wyslane[] = $wyslane;
+
+        return $this;
+    }
+
+    /**
+     * Remove wyslane
+     *
+     * @param \AppBundle\Entity\Wiadomosc $wyslane
+     */
+    public function removeWyslane(\AppBundle\Entity\Wiadomosc $wyslane)
+    {
+        $this->wyslane->removeElement($wyslane);
+    }
+
+    /**
+     * Get wyslane
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getWyslane()
+    {
+        return $this->wyslane;
+    }
+
+    /**
+     * Add odebrane
+     *
+     * @param \AppBundle\Entity\Wiadomosc $odebrane
+     * @return User
+     */
+    public function addOdebrane(\AppBundle\Entity\Wiadomosc $odebrane)
+    {
+        $this->odebrane[] = $odebrane;
+
+        return $this;
+    }
+
+    /**
+     * Remove odebrane
+     *
+     * @param \AppBundle\Entity\Wiadomosc $odebrane
+     */
+    public function removeOdebrane(\AppBundle\Entity\Wiadomosc $odebrane)
+    {
+        $this->odebrane->removeElement($odebrane);
+    }
+
+    /**
+     * Get odebrane
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getOdebrane()
+    {
+        return $this->odebrane;
     }
 }
