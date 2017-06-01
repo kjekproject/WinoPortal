@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Wiadomosc;
+use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -54,18 +55,22 @@ class WiadomoscController extends Controller
      * @Route("/new/{id}", name="wiadomosc_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request, $id)
+    public function newAction(Request $request, User $user)
     {
         $wiadomosc = new Wiadomosc();
+        $wiadomosc->setOdbiorca($user);
+        $nadawca = $this->container->get('security.context')->getToken()->getUser();
+        $wiadomosc->setNadawca($nadawca);
         $form = $this->createForm('AppBundle\Form\WiadomoscType', $wiadomosc);
         $form->handleRequest($request);
+        
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($wiadomosc);
             $em->flush();
 
-            return $this->redirectToRoute('wiadomosc_show', array('id' => $wiadomosc->getId()));
+            return $this->redirectToRoute('wiadomosc_odebrane', array('id' => $wiadomosc->getId()));
         }
 
         return $this->render('wiadomosc/new.html.twig', array(
@@ -116,7 +121,7 @@ class WiadomoscController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('wiadomosc_index');
+        return $this->redirectToRoute('wiadomosc_odebrane');
     }
 
     /**

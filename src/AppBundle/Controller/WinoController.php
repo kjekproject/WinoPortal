@@ -86,8 +86,6 @@ class WinoController extends Controller
     {
         $opinia = new Opinia();
         $opinia->setWino($wino);
-        $user = $this->container->get('security.context')->getToken()->getUser();
-        $opinia->setUser($user);
         $opiniaForm = $this->createForm('AppBundle\Form\OpiniaType', $opinia, array(
            'action' => $this->generateUrl('opinia_new'),
             'method' => 'POST',

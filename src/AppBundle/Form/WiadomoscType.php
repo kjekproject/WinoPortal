@@ -13,8 +13,8 @@ class WiadomoscType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('tytul')
-                ->add('tresc')
+        $builder->add('tytul', null, array('label'=>'Tytuł'))
+                ->add('tresc', null, array('label'=>'Treść'))
                 ->add('nadawca', null, array(
                     'attr' => array(
                         'class' => 'hidden'

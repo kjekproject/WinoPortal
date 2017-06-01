@@ -9,7 +9,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Nadawca</th>
+                <th>Adresat</th>
                 <th>Tytuł</th>
                 <th></th>
             </tr>
@@ -17,7 +17,7 @@
         <tbody>
         {% for wiadomosc in wiadomoscs %}
             <tr>
-                <td>{{ wiadomosc.nadawca }}</td>
+                <td>{{ wiadomosc.odbiorca }}</td>
                 <td>{{ wiadomosc.tytul }}</td>
                 <td>
                     <a class="btn btn-primary btn-xs" href="{{ path('wiadomosc_show', { 'id': wiadomosc.id }) }}">Pokaż</a>

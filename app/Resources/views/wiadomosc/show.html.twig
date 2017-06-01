@@ -9,20 +9,23 @@
                 <td>{{ wiadomosc.nadawca }}</td>
             </tr>
             <tr>
-                <th>Tytul</th>
+                <th>Tytuł</th>
                 <td>{{ wiadomosc.tytul }}</td>
             </tr>
             <tr>
-                <th>Tresc</th>
+                <th>Treść</th>
                 <td>{{ wiadomosc.tresc }}</td>
             </tr>
         </tbody>
     </table><br/>
     
-    <a class="btn btn-primary btn" href="{{ path('wiadomosc_new', { 'id': wiadomosc.id }) }} role="button">Odpowiedz</a><br/><br/>
-
+    {% if role == 'nadawca' %}
+        <a class="btn btn-primary btn" href="{{ path('wiadomosc_new', { 'id': wiadomosc.odbiorca.id }) }}" >Napisz wiadomość</a><br/><br/>
+    {% else %}
+        <a class="btn btn-primary btn" href="{{ path('wiadomosc_new', { 'id': wiadomosc.nadawca.id }) }}" >Odpowiedz</a><br/><br/>
+    {% endif %}
     {{ form_start(delete_form) }}
-        <input class="btn btn-primary" type="submit" value="Usuń">
+        <input class="btn btn-primary" type="submit" value="Usuń wiadomość">
     {{ form_end(delete_form) }}
 
 {% endblock %}

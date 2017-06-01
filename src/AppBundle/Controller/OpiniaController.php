@@ -29,6 +29,8 @@ class OpiniaController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $user = $this->container->get('security.context')->getToken()->getUser();
+            $opinia->setUser($user);
             $em->persist($opinia);
             $em->flush();
 
