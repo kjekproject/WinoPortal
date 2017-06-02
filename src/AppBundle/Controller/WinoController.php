@@ -21,16 +21,31 @@ class WinoController extends Controller
      * Lists all wino entities.
      *
      * @Route("/", name="wino_index")
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+        $wino = new Wino();
+        $form = $this->createFormBuilder($wino)
+                ->setAction($this->generateUrl('wino_index'))
+                ->setMethod('POST')
+                ->add('nazwa', null, ['label' => 'Wyszukaj po nazwie'])
+                ->add('save', 'submit', array('label' => 'Wyszukaj'))
+                ->getForm();
+        
+        $form->handleRequest($request);
         $em = $this->getDoctrine()->getManager();
-
-        $wina = $em->getRepository('AppBundle:Wino')->findAll();
-
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            $nazwa = $wino->getNazwa();
+            $wina = $em->getRepository('AppBundle:Wino')->findWineByNazwa($nazwa);
+        } else {
+            $wina = $em->getRepository('AppBundle:Wino')->findAll();
+        }
+        
         return $this->render('wino/index.html.twig', array(
             'wina' => $wina,
+            'form' => $form->createView(),
         ));
     }
     
@@ -68,7 +83,7 @@ class WinoController extends Controller
             $em->persist($wino);
             $em->flush();
 
-            return $this->redirectToRoute('wino_edit', array('id' => $wino->getId()));
+            return $this->redirectToRoute('wino_user');
         }
 
         return $this->render('wino/new.html.twig', array(
@@ -146,7 +161,7 @@ class WinoController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('wino_index');
+        return $this->redirectToRoute('wino_user');
     }
 
     /**

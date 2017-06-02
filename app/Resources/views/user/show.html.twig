@@ -1,40 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Wina {% endblock %}
-{% block contentTitle %}Lista win{% endblock %}    
+{% block title %} {{ user.username }} {% endblock %}
+{% block contentTitle %} {{ user.username }} {% endblock %}
 {% block content %}
-
-    {{ form_start(form) }}
-    {{ form_end(form) }}
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Lokalizacja</th>
+                <td>{{ user.address }}</td>
+            </tr>
+            <tr>
+                <th>Opis</th>
+                <td>{{ user.description }}</td>
+            </tr>
+        </tbody>
+    </table><br/>
     
-    <a class="btn btn-primary" href="{{ path('wino_index') }}">Pokaż wszystkie</a>
-    
+    <h3>Lista win użytkownika</h3>
     <table class="table">
         <thead>
             <tr>
                 <th>Nazwa</th>
-                <th>Producent</th>
                 <th>Kolor</th>
                 <th>Smak</th>
                 <th>Rocznik</th>
-                <th>Cena</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-        {% for wino in wina %}
+            {% for wino in user.wina %}
             <tr>
                 <td>{{ wino.nazwa }}</td>
-                <td>{{ wino.user.username }}</td>
                 <td>{{ wino.kolor }}</td>
                 <td>{{ wino.smak }}</td>
                 <td>{{ wino.rocznik }}</td>
-                <td>{{ wino.cena }}</td>
                 <td>
                     <a class="btn btn-primary btn-xs" href="{{ path('wino_show', { 'id': wino.id }) }}">Więcej</a>
                 </td>
             </tr>
-        {% endfor %}
+            {% endfor %}
         </tbody>
     </table>
+
+    <a class="btn btn-primary" href="{{ path('producent_index') }}">Lista wszystkich producentów</a>
+
 {% endblock %}

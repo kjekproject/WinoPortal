@@ -42,16 +42,21 @@
 
     <a class="btn btn-primary" href="{{ path('wino_index') }}">Powrót do listy</a>
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-    <a class="btn btn-primary" href="{{ path('wiadomosc_new', {'id': wino.user.id}) }}">Wyślij wiadomość</a>
+        {% if wino.user.id != app.user.id %}
+            <a class="btn btn-primary" href="{{ path('wiadomosc_new', {'id': wino.user.id}) }}">Wyślij wiadomość</a>
+        {% endif %}
     {% endif %}
-    <a class="btn btn-primary" href="{{ path('wino_index') }}">Pokaż producenta</a><br/><br/>
+    <a class="btn btn-primary" href="{{ path('producent_show', {'id': wino.user.id } ) }}">Pokaż producenta</a><br/><br/>
+    
     
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-    <h3>Dodaj opinię</h3>
-    {{ form_start(opinia_form) }}
-        {{ form_widget(opinia_form) }}
-        <input class="btn btn-primary" type="submit" value="Dodaj opinię"/>
-    {{ form_end(opinia_form) }}<br/>
+        {% if wino.user.id != app.user.id %}
+        <h3>Dodaj opinię</h3>
+        {{ form_start(opinia_form) }}
+            {{ form_widget(opinia_form) }}
+            <input class="btn btn-primary" type="submit" value="Dodaj opinię"/>
+        {{ form_end(opinia_form) }}<br/>
+        {% endif %}
     {% endif %}
     
     <h3>Opinie</h3>

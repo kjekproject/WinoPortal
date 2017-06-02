@@ -4,6 +4,7 @@
 {% block contentTitle %} Twoje winnica {% endblock %}
 {% block content %}
 
+    {% if app.user.wina | length != 0 %}
     <table class="table">
     <thead>
         <tr>
@@ -30,9 +31,10 @@
     {% endfor %}
     </tbody>
     </table>
+    {% else %}
+        <p>Nie masz żadnych win w swojej winnicy.</p>
+    {% endif %}
         
-        <a class="btn btn-primary btn-sm" href="{{ path('wino_new') }}">Dodaj wino</a>
-        
-    
-    
+    <a class="btn btn-primary btn-sm" href="{{ path('wino_new') }}">Dodaj wino</a>
+          
 {% endblock %}

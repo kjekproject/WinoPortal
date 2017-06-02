@@ -35,7 +35,7 @@
                       <li><a href="{{ path('wino_index') }}">Wina</a></li>
                       
                       {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                      <li><a href="#about">Producenci</a></li>
+                      <li><a href="{{ path('producent_index') }}">Producenci</a></li>
                       <li><a href="{{ path('wino_user') }}">Twoja winnica</a></li>
                       <li><a href="{{ path('wiadomosc_odebrane') }}">Wiadomości</a></li>
                       {% endif %}

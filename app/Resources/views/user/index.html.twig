@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Producenci {% endblock %}
+{% block contentTitle %} Lista producentów {% endblock %}
+{% block content %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nazwa</th>
+                <th>Lokalizacja</th>
+                <th>Ilość win</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for producer in producers %}
+            <tr>
+                <td>{{ producer.username }}</td>
+                <td>{{ producer.address }}</td>
+                <td>{{ producer.wina | length }}</td>
+                <td>
+                    <a class="btn btn-primary btn-xs" href="{{ path('producent_show', { 'id': producer.id }) }}">Więcej</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

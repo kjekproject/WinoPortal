@@ -12,4 +12,11 @@ use Doctrine\ORM\EntityRepository;
  */
 class WinoRepository extends EntityRepository
 {
+    public function findWineByNazwa($nazwa) {
+        $wina = $this->getEntityManager()->createQuery(
+                'SELECT w FROM AppBundle:Wino w WHERE w.nazwa LIKE :nazwa')
+                ->setParameter("nazwa", '%'.$nazwa.'%')
+                ->getResult();
+        return $wina;
+    }
 }
