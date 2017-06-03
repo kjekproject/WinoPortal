@@ -3,6 +3,13 @@
 {% block title %} Producenci {% endblock %}
 {% block contentTitle %} Lista producentów {% endblock %}
 {% block content %}
+    
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        {{ form_widget(form) }}
+        <input class="btn btn-primary" type="submit" value="Wyszukaj" />
+    {{ form_end(form) }}<br/>
+    <a class="btn btn-primary" href="{{ path('producent_index') }}">Pokaż wszystkich producentów</a><br/><br/>
+    
     <table class="table">
         <thead>
             <tr>
@@ -14,6 +21,7 @@
         </thead>
         <tbody>
         {% for producer in producers %}
+            {% if producer.wina |length != 0 %}
             <tr>
                 <td>{{ producer.username }}</td>
                 <td>{{ producer.address }}</td>
@@ -22,6 +30,7 @@
                     <a class="btn btn-primary btn-xs" href="{{ path('producent_show', { 'id': producer.id }) }}">Więcej</a>
                 </td>
             </tr>
+            {% endif %}
         {% endfor %}
         </tbody>
     </table>

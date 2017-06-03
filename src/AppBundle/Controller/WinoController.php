@@ -30,7 +30,6 @@ class WinoController extends Controller
                 ->setAction($this->generateUrl('wino_index'))
                 ->setMethod('POST')
                 ->add('nazwa', null, ['label' => 'Wyszukaj po nazwie'])
-                ->add('save', 'submit', array('label' => 'Wyszukaj'))
                 ->getForm();
         
         $form->handleRequest($request);

@@ -37,6 +37,7 @@ class Opinia
 
     /**
      * @ORM\ManyToOne(targetEntity="Wino", inversedBy="opinie")
+     * @ORM\JoinColumn(name="wino_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $wino;
     

@@ -19,16 +19,30 @@ class UserController extends Controller
      * Lists all wine users - producers
      *
      * @Route("/", name="producent_index")
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+        $producer = new User();
+        $form = $this->createFormBuilder($producer)
+            ->setAction($this->generateUrl('producent_index'))
+            ->setMethod('POST')
+            ->add('username', null, ['label' => 'Wyszukaj po nazwie'])
+            ->getForm();
+
+        $form->handleRequest($request);
         $em = $this->getDoctrine()->getManager();
 
-        $producers = $em->getRepository('AppBundle:User')->findAll();
+        if($form->isSubmitted() && $form->isValid()) {
+            $username = $producer->getUsername();
+            $producers = $em->getRepository('AppBundle:User')->findProducerByName($username);
+        } else {
+            $producers = $em->getRepository('AppBundle:User')->findAll();
+        }
 
         return $this->render('user/index.html.twig', array(
             'producers' => $producers,
+            'form' => $form->createView(),
         ));
     }
 

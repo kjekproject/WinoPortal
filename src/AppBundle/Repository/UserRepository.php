@@ -12,9 +12,10 @@ use Doctrine\ORM\EntityRepository;
  */
 class UserRepository extends EntityRepository
 {
-    public function findAllWineProducers() {
+    public function findProducerByName($username) {
         $producers = $this->getEntityManager()->createQuery(
-                'Select u FROM AppBundle:User u ORDER BY u.name ASC WHERE u.wina NOT NULL')
+                'Select u FROM AppBundle:User u WHERE u.username LIKE :username')
+                ->setParameter('username', '%'.$username.'%')
                 ->getResult();
         return $producers;
     }
