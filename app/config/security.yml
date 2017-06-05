@@ -29,7 +29,6 @@ security:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/wino/new, role: IS_AUTHENTICATED_FULLY }
-        - { path: ^/wino, role: IS_AUTHENTICATED_ANONYMOUSLY, methods: [GET] }
+        - { path: ^/wino, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/producent, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/., role: IS_AUTHENTICATED_FULLY }

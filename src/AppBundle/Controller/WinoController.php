@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Wino controller.
@@ -51,6 +52,7 @@ class WinoController extends Controller
     /**
      * @Route("/user", name="wino_user")
      * @Method("GET")
+     * @Security("has_role('IS_AUTHENTICATED_FULLY')")
      */
     public function userWineAction()
     {
@@ -67,6 +69,7 @@ class WinoController extends Controller
      *
      * @Route("/new", name="wino_new")
      * @Method({"GET", "POST"})
+     * @Security("has_role('IS_AUTHENTICATED_FULLY')")
      */
     public function newAction(Request $request)
     {
@@ -116,6 +119,7 @@ class WinoController extends Controller
      *
      * @Route("/{id}/edit", name="wino_edit")
      * @Method({"GET", "POST"})
+     * @Security("has_role('IS_AUTHENTICATED_FULLY')")
      */
     public function editAction(Request $request, Wino $wino)
     {
@@ -148,6 +152,7 @@ class WinoController extends Controller
      *
      * @Route("/{id}", name="wino_delete")
      * @Method("DELETE")
+     * @Security("has_role('IS_AUTHENTICATED_FULLY')")
      */
     public function deleteAction(Request $request, Wino $wino)
     {
