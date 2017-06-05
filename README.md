@@ -8,19 +8,14 @@ Z kolei pasjonaci wina będą mogli zapoznać się z ofertą poszczególnych pro
 
 2. Model danych:
 
-Producenci:
+Użytkownik (stworzony przy użyciu FOSUserBundle):
 - nazwa,
-- adres (miejscowość, kod pocztowy, ulica, numer budynku, numer mieszkania),
+- adres/lokalizacja,
 - email,
 - opis,
-- produkty (wina - relacja z winami).
+- wina (relacja w winem),
 
-Klienci:
-- nazwa (imię i nazwisko / nazwa firmy),
-- adres (miejscowość, kod pocztowy, ulica, numer budynku, numer mieszkania),
-- email.
-
-Wina:
+Wino:
 - nazwa,
 - kolor (białe, różowe, czerwone),
 - smak (wytrawne, półwytrawne, półsłodkie, słodkie),
@@ -33,14 +28,7 @@ Wina:
 Opinie:
 - treść,
 - ocena,
-- wino (relacja z winami)
-
-Transakcje:
-- produkt (wino)
-- ilość,
-- kupujący (relacja z klientami),
-- sprzedający (relacja z producentami),
-- stan zapytania.
+- autor (relacja z użytkownikiem).
 
 Wiadomości:
 - treść,
@@ -50,20 +38,22 @@ Wiadomości:
 
 3. Widoki:
 
-- strona główna (lista win + formularz wyszukiwania wina),
-- strona z producentami (lista producentów)
+- strona rejestracji,
+
+- strona główna,
+- strona rejestracji,
+- strona logowania,
+- strona edycji danych, 
+- strona z listą win + wyszukiwanie wina po nazwie),
+- strona wina (informacje + opinie + formularz dodania opini)
+- strona z listą producentów + wyszukiwanie po nazwie
 - strona producenta (informacje o producencie + lista wyprodukowanych win),
-- strona wina (dane + opinie + formularz zamówienia + formularz dodania opini)
-- strona obsługi zamówienia przez producenta (zapytanie + możliwość wysłania wiadomości).
-- strona informacji zwrotnej odnośnie zamówienia od producenta dla klienta (info czy zostało przyjęte + możliwość wysłania wiadomości).
-- strona z wiadomościami
+- strona wysyłania wiadomości,
+- skrzynka odbiorcza,
+- skrzynka nadawcza.
 
 4. Procesy:
 
-- rejestracja użytkowsnika (wraz z wyborem roli czy producent czy klient),
-- edycja profilu użytkownika,
-- logowania,
-- wylogowywanie,
-- dodawanie wina (opcja dla producenta),
-- dodawanie komentarzy do wina (klient)
+- dodawanie wina,
+- dodawanie opini o winie,
 - wysyłanie wiadomości.
