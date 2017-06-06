@@ -11,7 +11,8 @@ class ProfileFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('description', TextType::class, ['label' => 'Opis'])
+            ->add('description', 'textarea', 
+                ['label' => 'Opis', 'attr' => array('rows' => '3')])
             ->add('address', TextType::class, ['label' => 'Lokalizacja (miasto/region)']);
     }
     public function getParent()

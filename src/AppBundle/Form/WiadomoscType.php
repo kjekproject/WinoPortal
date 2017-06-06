@@ -17,13 +17,15 @@ class WiadomoscType extends AbstractType
                 ->add('tresc', null, array('label'=>'Treść'))
                 ->add('nadawca', null, array(
                     'attr' => array(
-                        'class' => 'hidden'
+                        'class' => 'hidden',
+                        'readonly' => true,
                     ),
                     'label' => false
                 ))
                 ->add('odbiorca', null, array(
                     'attr' => array(
-                        'class' => 'hidden'
+                        'class' => 'hidden',
+                        'readonly' => true,
                     ),
                     'label' => false
                 ));

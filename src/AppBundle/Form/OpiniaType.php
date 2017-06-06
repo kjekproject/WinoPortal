@@ -21,14 +21,17 @@ class OpiniaType extends AbstractType
                     'class' => 'AppBundle:Wino',
                     'choice_label' => 'id',
                     'attr' => array(
-                        'class' => 'hidden'
+                        'class' => 'hidden',
+                        'read_only' => true
                     ),
-                    'label' => false,))
+                    'label' => false,
+                    ))
                 ->add('user','entity', array(
                     'class' => 'AppBundle:User',
                     'choice_label' => 'id',
                     'attr' => array(
-                        'class' => 'hidden'
+                        'class' => 'hidden',
+                        'readonly' => true,
                     ),
                     'label' => false,
                 ));
