@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Opinie
@@ -25,6 +26,9 @@ class Opinia
      * @var string
      *
      * @ORM\Column(name="tresc", type="text")
+     * @Assert\Length(min = 2, max = 300, 
+     *     minMessage = "Opinia musi mieć co najmniej 2 znaki.",
+     *     maxMessage = "Opinia może mieć maksymalnie 300 znaków.")
      */
     private $tresc;
 
@@ -32,6 +36,8 @@ class Opinia
      * @var int
      *
      * @ORM\Column(name="ocena", type="integer")
+     * @Assert\Range(min = 1, max = 10, 
+     *     invalidMessage = "Ocena musi być z zakresu od 1 do 10.")
      */
     private $ocena;
 

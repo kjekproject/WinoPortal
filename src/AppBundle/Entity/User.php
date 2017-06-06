@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -22,11 +23,13 @@ class User extends BaseUser
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Assert\Length(max = 800, maxMessage = "Maksymalnie 800 znaków.")
      */
     private $description;
     
     /**
      * @ORM\Column(type="text", nullable=true) 
+     * @Assert\Length(max = 200, maxMessage = "Maksymalnie 200 znaków.")
      */
     private $address;
     

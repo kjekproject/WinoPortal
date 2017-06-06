@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Opinia;
+use AppBundle\Entity\Wino;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -18,12 +19,13 @@ class OpiniaController extends Controller
     /**
      * Creates a new opinia entity.
      *
-     * @Route("/new", name="opinia_new")
-     * @Method({"POST"})
+     * @Route("/new/{id}", name="opinia_new")
+     * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, Wino $wino)
     {
         $opinia = new opinia();
+        $opinia->setWino($wino);
         $form = $this->createForm('AppBundle\Form\OpiniaType', $opinia);
         $form->handleRequest($request);
 
@@ -36,5 +38,10 @@ class OpiniaController extends Controller
 
             return $this->redirectToRoute('wino_show', array('id' => $opinia->getWino()->getId()));
         }
+        
+        return $this->render('opinia/new.html.twig', array(
+            'form' => $form->createView(),
+            'wino' => $wino,
+        ));
     }
 }

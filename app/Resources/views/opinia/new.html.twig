@@ -1,16 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Opinia creation</h1>
-
+{% block title %} Dodawanie opinii {% endblock %}
+{% block contentTitle %} Dodaj opinię do wina {{ wino.nazwa }} {% endblock %}
+{% block content %}
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+        <input class="btn btn-primary" type="submit" value="Dodaj opinię"/>
+    {{ form_end(form) }}<br/>
 
-    <ul>
-        <li>
-            <a href="{{ path('opinia_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    <a class="btn btn-primary" href="{{ path('wino_show', {'id': wino.id } ) }}">Powrót</a>
 {% endblock %}

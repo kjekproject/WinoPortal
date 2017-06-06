@@ -52,7 +52,7 @@ class WinoController extends Controller
     /**
      * @Route("/user", name="wino_user")
      * @Method("GET")
-     * @Security("has_role('IS_AUTHENTICATED_FULLY')")
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      */
     public function userWineAction()
     {
@@ -69,7 +69,7 @@ class WinoController extends Controller
      *
      * @Route("/new", name="wino_new")
      * @Method({"GET", "POST"})
-     * @Security("has_role('IS_AUTHENTICATED_FULLY')")
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      */
     public function newAction(Request $request)
     {
@@ -100,17 +100,9 @@ class WinoController extends Controller
      * @Method("GET")
      */
     public function showAction(Wino $wino)
-    {
-        $opinia = new Opinia();
-        $opinia->setWino($wino);
-        $opiniaForm = $this->createForm('AppBundle\Form\OpiniaType', $opinia, array(
-           'action' => $this->generateUrl('opinia_new'),
-            'method' => 'POST',
-        ));
-                    
+    {                  
         return $this->render('wino/show.html.twig', array(
             'wino' => $wino,
-            'opinia_form' => $opiniaForm->createView(),
         ));
     }
 
@@ -119,7 +111,7 @@ class WinoController extends Controller
      *
      * @Route("/{id}/edit", name="wino_edit")
      * @Method({"GET", "POST"})
-     * @Security("has_role('IS_AUTHENTICATED_FULLY')")
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      */
     public function editAction(Request $request, Wino $wino)
     {
@@ -152,7 +144,7 @@ class WinoController extends Controller
      *
      * @Route("/{id}", name="wino_delete")
      * @Method("DELETE")
-     * @Security("has_role('IS_AUTHENTICATED_FULLY')")
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      */
     public function deleteAction(Request $request, Wino $wino)
     {

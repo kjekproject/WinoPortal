@@ -31,10 +31,10 @@ Opinie:
 - autor (relacja z użytkownikiem).
 
 Wiadomości:
+- tytuł,
 - treść,
-- nadawca,
-- odbiorca,
-- status wiadomości.
+- nadawca (relacja z użytkownikiem),
+- odbiorca (relacja z użytkownikiem).
 
 3. Widoki:
 

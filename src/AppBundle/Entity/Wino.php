@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Wino
@@ -32,6 +33,8 @@ class Wino
      * @var string
      *
      * @ORM\Column(name="kolor", type="string", length=16)
+     * @Assert\Choice(choices = {"białe", "różowe", "czerwone"}, 
+     *     message = "Wybierz jedno z podanych.")
      */
     private $kolor;
 
@@ -39,13 +42,17 @@ class Wino
      * @var string
      *
      * @ORM\Column(name="smak", type="string", length=32)
+     * @Assert\Choice(choices = {"wytrawne", "półwytrawne", "półsłodkie", "słodkie"}, 
+     *     message = "Wybierz jedno z podanych.")
      */
     private $smak;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="rocznik", type="string", length=32)
+     * @ORM\Column(name="rocznik", type="integer", length=32)
+     * @Assert\Range(min = 1800, max = 2017, 
+     *     invalidMessage = "Wpisz rocznik z zakresu 1800-2017.")
      */
     private $rocznik;
 

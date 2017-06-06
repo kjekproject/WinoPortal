@@ -9,4 +9,6 @@
     <div>
         <input class="btn btn-primary" type="submit" value="{{ 'profile.edit.submit'|trans }}" />
     </div>
-{{ form_end(form) }}
+{{ form_end(form) }}<br/>
+
+<a class="btn btn-primary" href="{{ path('fos_user_change_password') }}">Zmień hasło</a>

@@ -4,7 +4,7 @@
     {{ form_row(form.email) }}
     {{ form_row(form.username) }}
     {{ form_row(form.address) }}
-    {{ form_row(form.description) }}
+    {{ form_row(form.description, {'attr': {'rows': '4'} }) }}
     {{ form_row(form.plainPassword) }}
     <div>
         <input class="btn btn-primary" type="submit" value="{{ 'registration.submit'|trans }}" />

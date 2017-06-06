@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Wiadomosc
@@ -32,6 +33,7 @@ class Wiadomosc
      * @var string
      *
      * @ORM\Column(name="tresc", type="text")
+     * @Assert\Length(max = 800, maxMessage = "Wiadomość może mieć maksymalnie 800 znaków")
      */
     private $tresc;
 
