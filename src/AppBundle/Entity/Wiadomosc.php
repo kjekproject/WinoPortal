@@ -33,17 +33,20 @@ class Wiadomosc
      * @var string
      *
      * @ORM\Column(name="tresc", type="text")
-     * @Assert\Length(max = 800, maxMessage = "Wiadomość może mieć maksymalnie 800 znaków")
+     * @Assert\Length(max = 800, maxMessage = "Wiadomość może mieć maksymalnie 800 znaków.")
+     * @Assert\NotNull(message = "Musisz wpisać treść wiadomości.")
      */
     private $tresc;
 
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="wyslane")
+     * @Assert\NotNull(message = "Brak wskazanego nadawcy wiadomości.")
      */
     private $nadawca;
     
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="odebrane")
+     * @Assert\NotNull(message = "Wiadomość musi mieć wskazanego adresata.")
      */
     private $odbiorca;
 

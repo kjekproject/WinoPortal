@@ -26,6 +26,7 @@ class Wino
      * @var string
      *
      * @ORM\Column(name="nazwa", type="string", length=128)
+     * @Assert\NotNull(message = "Musisz podać nazwę wina.")
      */
     private $nazwa;
 
@@ -35,6 +36,7 @@ class Wino
      * @ORM\Column(name="kolor", type="string", length=16)
      * @Assert\Choice(choices = {"białe", "różowe", "czerwone"}, 
      *     message = "Wybierz jedno z podanych.")
+     * @Assert\NotNull(message = "Musisz wybrać jedną z podanych wartości.")
      */
     private $kolor;
 
@@ -43,7 +45,8 @@ class Wino
      *
      * @ORM\Column(name="smak", type="string", length=32)
      * @Assert\Choice(choices = {"wytrawne", "półwytrawne", "półsłodkie", "słodkie"}, 
-     *     message = "Wybierz jedno z podanych.")
+     *     message = "Wybierz jedną z podanych wartości.")
+     * @Assert\NotNull(message = "Musisz wybrać jedną z podanych wartości.")
      */
     private $smak;
 
@@ -53,6 +56,7 @@ class Wino
      * @ORM\Column(name="rocznik", type="integer", length=32)
      * @Assert\Range(min = 1800, max = 2017, 
      *     invalidMessage = "Wpisz rocznik z zakresu 1800-2017.")
+     * @Assert\NotNull(message = "Musisz podać rocznik wina.")
      */
     private $rocznik;
 

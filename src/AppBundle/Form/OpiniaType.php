@@ -22,7 +22,7 @@ class OpiniaType extends AbstractType
                     'choice_label' => 'id',
                     'attr' => array(
                         'class' => 'hidden',
-                        'read_only' => true
+                        'readonly' => true,
                     ),
                     'label' => false,
                     ))

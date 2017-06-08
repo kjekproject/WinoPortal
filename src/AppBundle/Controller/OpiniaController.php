@@ -24,7 +24,7 @@ class OpiniaController extends Controller
      */
     public function newAction(Request $request, Wino $wino)
     {
-        $opinia = new opinia();
+        $opinia = new Opinia();
         $opinia->setWino($wino);
         $form = $this->createForm('AppBundle\Form\OpiniaType', $opinia);
         $form->handleRequest($request);

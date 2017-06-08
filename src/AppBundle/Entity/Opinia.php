@@ -29,6 +29,7 @@ class Opinia
      * @Assert\Length(min = 2, max = 300, 
      *     minMessage = "Opinia musi mieć co najmniej 2 znaki.",
      *     maxMessage = "Opinia może mieć maksymalnie 300 znaków.")
+     * @Assert\NotNull(message = "Musisz wpisać swoją opinię.")
      */
     private $tresc;
 
@@ -38,17 +39,20 @@ class Opinia
      * @ORM\Column(name="ocena", type="integer")
      * @Assert\Range(min = 1, max = 10, 
      *     invalidMessage = "Ocena musi być z zakresu od 1 do 10.")
+     * @Assert\NotNull(message = "Musisz podać ocenę wina.")
      */
     private $ocena;
 
     /**
      * @ORM\ManyToOne(targetEntity="Wino", inversedBy="opinie")
      * @ORM\JoinColumn(name="wino_id", referencedColumnName="id", onDelete="CASCADE")
+     * @Assert\NotNull(message = "Opinia musi odnosić się do wina.")
      */
     private $wino;
     
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="opinie")
+     * @Assert\NotNull(message = "Opiniamusi mieć autora.")
      */
     private $user;
     
