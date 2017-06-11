@@ -56,7 +56,7 @@ class WinoController extends Controller
      */
     public function userWineAction()
     {
-        $id = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $id = $this->getUser()->getId();
         $wina = $this->getDoctrine()->getRepository('AppBundle:Wino')->findBy(array('user' => $id));
 
         return $this->render('wino/user.html.twig', array(
@@ -77,7 +77,7 @@ class WinoController extends Controller
         $form = $this->createForm('AppBundle\Form\WinoType', $wino);
         $form->handleRequest($request);
         
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->getUser();
         $wino->setUser($user);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -115,7 +115,7 @@ class WinoController extends Controller
      */
     public function editAction(Request $request, Wino $wino)
     {
-        $userId = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $userId = $this->getUser()->getId();
         $producerId = $wino->getUser()->getId();
         
         if($userId !== $producerId) {

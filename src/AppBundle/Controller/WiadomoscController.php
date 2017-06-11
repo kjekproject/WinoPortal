@@ -23,7 +23,7 @@ class WiadomoscController extends Controller
     public function odebraneAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $id = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $id = $this->getUser()->getId();
 
         $wiadomoscs = $em->getRepository('AppBundle:Wiadomosc')->findByOdbiorca($id);
 
@@ -40,7 +40,7 @@ class WiadomoscController extends Controller
     public function wyslaneAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $id = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $id = $this->getUser()->getId();
 
         $wiadomoscs = $em->getRepository('AppBundle:Wiadomosc')->findByNadawca($id);
 
@@ -89,7 +89,7 @@ class WiadomoscController extends Controller
     {
         $deleteForm = $this->createDeleteForm($wiadomosc);
 
-        $loggedUserId = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $loggedUserId = $this->getUser()->getId();
         $nadawcaId = $wiadomosc->getNadawca()->getId();
         if($loggedUserId === $nadawcaId) {
             $role = 'nadawca';

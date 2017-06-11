@@ -40,7 +40,7 @@ class Wiadomosc
 
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="wyslane")
-     * @Assert\NotNull(message = "Brak wskazanego nadawcy wiadomości.")
+     * @Assert\NotNull(message = "/wiadomość musi mieć nadawcę.")
      */
     private $nadawca;
     
