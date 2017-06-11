@@ -23,9 +23,9 @@ class WiadomoscController extends Controller
     public function odebraneAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $id = $this->getUser()->getId();
+        $user = $this->getUser();
 
-        $wiadomoscs = $em->getRepository('AppBundle:Wiadomosc')->findByOdbiorca($id);
+        $wiadomoscs = $em->getRepository('AppBundle:Wiadomosc')->findByOdbiorca($user);
 
         return $this->render('wiadomosc/odebrane.html.twig', array(
             'wiadomoscs' => $wiadomoscs,
@@ -40,9 +40,9 @@ class WiadomoscController extends Controller
     public function wyslaneAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $id = $this->getUser()->getId();
+        $user = $this->getUser();
 
-        $wiadomoscs = $em->getRepository('AppBundle:Wiadomosc')->findByNadawca($id);
+        $wiadomoscs = $em->getRepository('AppBundle:Wiadomosc')->findByNadawca($user);
 
         return $this->render('wiadomosc/wyslane.html.twig', array(
             'wiadomoscs' => $wiadomoscs,
@@ -59,7 +59,7 @@ class WiadomoscController extends Controller
     {
         $wiadomosc = new Wiadomosc();
         $wiadomosc->setOdbiorca($user);
-        $nadawca = $this->container->get('security.context')->getToken()->getUser();
+        $nadawca = $this->getUser();
         $wiadomosc->setNadawca($nadawca);
         $form = $this->createForm('AppBundle\Form\WiadomoscType', $wiadomosc);
         $form->handleRequest($request);
@@ -70,7 +70,7 @@ class WiadomoscController extends Controller
             $em->persist($wiadomosc);
             $em->flush();
 
-            return $this->redirectToRoute('wiadomosc_odebrane', array('id' => $wiadomosc->getId()));
+            return $this->redirectToRoute('wiadomosc_odebrane');
         }
 
         return $this->render('wiadomosc/new.html.twig', array(
@@ -89,9 +89,9 @@ class WiadomoscController extends Controller
     {
         $deleteForm = $this->createDeleteForm($wiadomosc);
 
-        $loggedUserId = $this->getUser()->getId();
-        $nadawcaId = $wiadomosc->getNadawca()->getId();
-        if($loggedUserId === $nadawcaId) {
+        $loggedUser = $this->getUser();
+        $nadawca = $wiadomosc->getNadawca();
+        if($loggedUser === $nadawca) {
             $role = 'nadawca';
         } else {
             $role = 'odbiorca';

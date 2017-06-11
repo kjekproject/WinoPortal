@@ -56,8 +56,8 @@ class WinoController extends Controller
      */
     public function userWineAction()
     {
-        $id = $this->getUser()->getId();
-        $wina = $this->getDoctrine()->getRepository('AppBundle:Wino')->findBy(array('user' => $id));
+        $user = $this->getUser();
+        $wina = $this->getDoctrine()->getRepository('AppBundle:Wino')->findBy(array('user' => $user));
 
         return $this->render('wino/user.html.twig', array(
             'wina' => $wina,
@@ -115,11 +115,11 @@ class WinoController extends Controller
      */
     public function editAction(Request $request, Wino $wino)
     {
-        $userId = $this->getUser()->getId();
-        $producerId = $wino->getUser()->getId();
+        $user = $this->getUser();
+        $producer = $wino->getUser();
         
-        if($userId !== $producerId) {
-            $this->redirectToRoute('wino_index');
+        if($user !== $producer) {
+            return $this->redirectToRoute('wino_index');
         }
         
         $deleteForm = $this->createDeleteForm($wino);
