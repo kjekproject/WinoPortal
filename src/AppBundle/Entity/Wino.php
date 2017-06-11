@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use AppBundle\Validator\Constraints as WinoAssert;
 
 /**
  * Wino
@@ -54,9 +55,9 @@ class Wino
      * @var int
      *
      * @ORM\Column(name="rocznik", type="integer", length=32)
-     * @Assert\Range(min = 1800, max = 2017, 
-     *     invalidMessage = "Wpisz rocznik z zakresu 1800-2017.")
+     * @Assert\Range(min = 1800, minMessage = "Podaj starszy rocznik, co najmniej 1800.")
      * @Assert\NotNull(message = "Musisz podać rocznik wina.")
+     * @WinoAssert\YearLimit
      */
     private $rocznik;
 
