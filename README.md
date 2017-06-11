@@ -57,3 +57,19 @@ Wiadomości:
 - dodawanie wina,
 - dodawanie opini o winie,
 - wysyłanie wiadomości.
+
+5. Zrzuty ekranu:
+Strona główna:
+![zrzut ekranu z 2017-06-11 20-57-33](https://user-images.githubusercontent.com/22776880/27013708-a7b698c4-4ee9-11e7-95fe-9ed2f1670094.png)
+
+Strona z listą wszystkich win:
+![zrzut ekranu z 2017-06-11 21-13-46](https://user-images.githubusercontent.com/22776880/27013776-09527890-4eeb-11e7-802e-e2cd62d84fae.png)
+
+Strona wyświetlająca użytkownika i jego wina
+![zrzut ekranu z 2017-06-11 21-14-28](https://user-images.githubusercontent.com/22776880/27013779-0dcc114c-4eeb-11e7-90b0-66700ecffcec.png)
+
+Strona o winie oraz opinie o nim
+![zrzut ekranu z 2017-06-11 21-14-35](https://user-images.githubusercontent.com/22776880/27013785-10c673ec-4eeb-11e7-9cef-ef9b95a22b4a.png)
+
+Strona z wiadomościami
+![zrzut ekranu z 2017-06-11 21-14-43](https://user-images.githubusercontent.com/22776880/27013788-1362d4d8-4eeb-11e7-811a-0b8f54979f66.png)
