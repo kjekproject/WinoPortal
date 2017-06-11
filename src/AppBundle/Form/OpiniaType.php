@@ -25,15 +25,6 @@ class OpiniaType extends AbstractType
                         'readonly' => true,
                     ),
                     'label' => false,
-                    ))
-                ->add('user','entity', array(
-                    'class' => 'AppBundle:User',
-                    'choice_label' => 'id',
-                    'attr' => array(
-                        'class' => 'hidden',
-                        'readonly' => true,
-                    ),
-                    'label' => false,
                 ));
     }
     
