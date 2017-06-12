@@ -52,7 +52,6 @@ class Opinia
     
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="opinie")
-     * @Assert\NotNull(message = "Opinia musi mieć autora.")
      */
     private $user;
     
