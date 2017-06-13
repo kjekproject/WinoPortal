@@ -5,10 +5,7 @@
 WinoPortal ma za zadanie kojarzyć producentów wina w Polsce z klientami.
 Mali producenci wina mają porblem z dotarciem do klientów, na tym portalu będa mogli pochwalić się swoimi produktami i je sprzedawać.
 Z kolei pasjonaci wina będą mogli zapoznać się z ofertą poszczególnych producentów, dokonać zakupu oraz wyrazić swoją opinię.
-Aplikacja napisana przy użyciu Symfony 2.8. W celu instalacji nakleży wykonaćnastępujące kroki:
-- sklonować repozytorium,
-- zainstalować niezbędne komponenty (composer instal) i  uzupełnić parametry bazy danych,
-- dokonać migracji danych z pliku winoPortal.sql
+Aplikacja napisana przy użyciu Symfony 2.8.
 
 2. Model danych:
 
